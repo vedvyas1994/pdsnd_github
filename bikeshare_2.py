@@ -1,6 +1,6 @@
 import time
 import pandas as pd
-import numpy as np
+
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york': 'new_york_city.csv',
@@ -171,7 +171,7 @@ def trip_duration_stats(df):
 def raw_user_data(df):
     """Displays the 5 rows contained in the loaded dataset depending upon the name of the city entered by user.
        Prompts the user to enter if the next 5 rows should be printed. Keeps printing 5 rows depending upon input provided by user.
-    """
+       """
 
     #Global setting to enable all columns to be displayed
     pd.set_option('display.max_columns', None)
@@ -216,8 +216,8 @@ def user_stats(df):
     if 'Birth Year' in df.columns:
         birth_year = df['Birth Year']
         #earliest year:
-        earliest = birth_year.min()
-        print('\nThe earliest year of birth is: ', int(earliest))
+        earliestYear = birth_year.min()
+        print('\nThe earliest year of birth is: ', int(earliestYear))
         #most_recent year:
         most_recent = birth_year.max()
         print('The most recent year pf birth is: ', int(most_recent))
