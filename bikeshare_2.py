@@ -1,6 +1,6 @@
 import time
 import pandas as pd
-import numpy as np
+
 
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york': 'new_york_city.csv',
@@ -9,8 +9,8 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 #Defining lists globally to check if user input entered is valid:
 cities = ['chicago', 'new york', 'washington']
 months = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
-days = ['all', 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday' ]			 
-			  
+days = ['all', 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday' ]
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -38,7 +38,7 @@ def get_filters():
                 break
             else:
                 print('\nKindly enter the correct month or enter "all" to explore data for all months!')
-                
+
     # get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
             day = input('Enter the day according to which data should be filtered: (Monday to Sunday)\nNote: Enter "all" for no filter\n').lower()
@@ -65,7 +65,7 @@ def load_data(city, month, day):
     """
 	#Load data into df based on the city entered by user:
     df = pd.read_csv(CITY_DATA[city])
-	
+
     # convert the Start Time column to datetime object:
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
@@ -98,7 +98,7 @@ def time_stats(df):
 
 	# convert the Start Time column to datetime type
     df['Start Time'] = pd.to_datetime(df['Start Time'])
-	
+
     # display the most common month
 	#Extract month from Start Time column:
     df['month'] = df['Start Time'].dt.month
@@ -145,7 +145,7 @@ def station_stats(df):
     common_start_end_stns = start_end_stns.mode()
 	#Print the most frequently occurring combinantion of start and end stations:
     print('\nThe Most Common Start & End Station combination is:\n{}'.format(common_start_end_stns[0]))
-    
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -170,7 +170,7 @@ def trip_duration_stats(df):
 
 def raw_user_data(df):
     """Displays raw user data depending upon user input."""
-    
+
     #Global setting to enable all columns to be displayed
     pd.set_option('display.max_columns', None)
     #Fetch the number of rows in data
@@ -182,7 +182,7 @@ def raw_user_data(df):
         print(df.iloc[i: i + 5, : ])
         answer = input('\nDo you want to print the next 5 rows?\nPlease enter "yes" or "no"\n').lower()
         if answer != 'yes':
-            break        
+            break
 
 
 def user_stats(df):
@@ -198,8 +198,8 @@ def user_stats(df):
     for i, count in enumerate(user_count):
         print('{} : {} '.format(user_count.index[i], count))
 
-	#Display counts of gender	
-	#In washington.csv, there are no columns for gender & birth year. 
+	#Display counts of gender
+	#In washington.csv, there are no columns for gender & birth year.
 	#Check if data has 'Gender' column:
     if 'Gender' in df.columns:
     # Display counts of gender
@@ -208,7 +208,7 @@ def user_stats(df):
         #Using for loop to print the index & count of each gender:
         for i, count in enumerate(gender_count):
             print('{} : {} '.format(gender_count.index[i], count))
-	
+
 	#Display earliest, most recent, and most common year of birth
 	#Check if df has 'Birth Year' column:
     if 'Birth Year' in df.columns:
@@ -237,10 +237,10 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
         raw_user_data(df)
-  
+
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
-            break      
+            break
 
 
 if __name__ == "__main__":
