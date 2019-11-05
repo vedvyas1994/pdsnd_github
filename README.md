@@ -1,18 +1,16 @@
-### Date created
-18th May 2019
+# Explore US Bikeshare Data
+#### by Vedavyas Kamath <br><br>
 
-### Project Title
-Explore US Bikeshare Data
 
-### Description
+## Description
 Used Python to explore data related to bike share systems for three major cities in the United States, Chicago, New York City, and Washington. In this project, first I have imported the data based on city name provided by user and then answered interesting questions about it by computing descriptive statistics.
 
-### Files used
-chicago.csv
-washington.csv
-new_york_city.csv
+## Files used
+chicago.csv, washington.csv, new_york_city.csv <br>
+The files are large in size because of which I have not uploaded in the repository. Please find the files available for download
+[here](https://drive.google.com/file/d/1erEAelUT8dKfwyMcIRWLffrvTMfuCMIa/view?usp=sharing)
 
-### Credits
+## Credits
 1. Checking user input against a set of values contained in a list:
 https://stackoverflow.com/questions/33534751/checking-user-input-against-list-python-3-x
 
